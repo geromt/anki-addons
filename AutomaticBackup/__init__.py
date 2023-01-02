@@ -1,3 +1,5 @@
+"""Anki Add-on to create a backup and uploaded to the cloud"""
+
 from aqt import mw
 from aqt.utils import showInfo, qconnect
 from aqt.operations import QueryOp
