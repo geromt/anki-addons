@@ -3,13 +3,11 @@ from aqt.utils import showInfo, qconnect
 from aqt.operations import QueryOp
 from aqt.qt import *
 
-import subprocess
-import os
-
 from AutomaticBackup.utils import *
 
 
-def autmatic_backup():
+def automatic_backup():
+    # Get info in configuration file as a dictionary
     config = mw.addonManager.getConfig(__name__)
 
     # If backup_dir doesn't exist, creates it
@@ -46,11 +44,12 @@ def on_success(state):
 
 def ui_action():
     op = QueryOp(
-        parent = mw,
-        op = lambda col: autmatic_backup(),
-        success = on_success
+        parent=mw,
+        op=lambda col: automatic_backup(),
+        success=on_success
     )
     op.with_progress().run_in_background()
+
 
 action = QAction("Automatic Backup", mw)
 qconnect(action.triggered, ui_action)

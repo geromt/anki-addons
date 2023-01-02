@@ -4,6 +4,7 @@ import subprocess
 import os
 import re
 
+
 def backup_collection(col, backup_folder: str, compress_colpkg: bool) -> bool:
     """Create the backup file of the collection
 
@@ -13,7 +14,7 @@ def backup_collection(col, backup_folder: str, compress_colpkg: bool) -> bool:
     :returns: Returns True if the backup file was created successfully
     """
     state = col.create_backup(backup_folder=backup_folder, force=True,
-                                 wait_for_completion=True)
+                              wait_for_completion=True)
     if not state:
         return False
 
@@ -31,8 +32,8 @@ def find_colpkg_file(dir_path: str) -> str:
 
     :param dir_path: Path of the directory.
     :raises ValueError: If dir_path is not a directory.
-    :returns: The filename of the first file that is finded.If it don't find any
-        file, returns None.
+    :returns: The filename of the first file that is found.If it doesn't find
+        any file, returns None.
     """
     if not os.path.isdir(dir_path):
         raise ValueError("dir_path is not a directory")
