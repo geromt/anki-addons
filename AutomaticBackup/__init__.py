@@ -1,4 +1,4 @@
-"""Anki Add-on to create a backup and uploaded to the cloud"""
+"""Anki Add-on to create a backup of the collection and uploaded to the cloud"""
 
 from aqt import mw
 from aqt.utils import showInfo, qconnect
