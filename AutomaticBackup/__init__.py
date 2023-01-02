@@ -4,18 +4,23 @@ from aqt.operations import QueryOp
 from aqt.qt import *
 
 from AutomaticBackup.utils import *
+from AutomaticBackup.validate_config import *
 
 
 def automatic_backup():
     # Get info in configuration file as a dictionary
-    config = mw.addonManager.getConfig(__name__)
+    try:
+        config = get_config()
+    except ConfigError as e:
+        print(e)
+        return False
 
     # If backup_dir doesn't exist, creates it
     if not os.path.exists(config["backup_dir"]):
         try:
             os.makedirs(config["backup_dir"])
         except PermissionError:
-            showInfo("You don't have permissions to create backup_dir")
+            print("You don't have permissions to create backup_dir")
             return False
 
     # Remove the old backup file

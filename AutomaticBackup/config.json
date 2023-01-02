@@ -1,8 +1,10 @@
 {
-  "backup_dir": "/home/geromt/.local/share/AnkiBackup",
-  "include_media": true,
-  "compress_colpkg": true,
-  "compress_media": false,
-  "upload_to_cloud": true,
-  "remote": "backup-anki:"
+  "User 1": {
+    "backup_dir": "/home/geromt/.local/share/AnkiBackup",
+    "include_media": true,
+    "compress_colpkg": true,
+    "compress_media": false,
+    "upload_to_cloud": false,
+    "remote": "backup-anki:"
+  }
 }
