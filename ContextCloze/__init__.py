@@ -82,7 +82,7 @@ def get_cloze_text(text):
     n = text.find("[[")
     m = text.find("]]")
 
-    return text[:n], text[n+2 : m], text[m+2:]
+    return text[:n], text[n+2: m], text[m+2:]
 
 
 def on_strike(editor):
@@ -92,14 +92,27 @@ def on_strike(editor):
     editor.loadNote()
 
 
+def context_cloze(editor):
+    text = editor.note["Original Text"]
+    _, cloze, _ = get_cloze_text(text)
+    editor.note["Word (Not fill)"] = cloze
+    editor.note["Cloze (Not fill)"] = mi_cloze(text)
+    editor.note["Hightlighted (Not fill)"] = cloze_format(text)
+    editor.loadNote()
+
+
+def add_context_cloze_button(buttons, editor):
+    return buttons.append(editor.addButton(None, "context_cloze", context_cloze))
+
+
 def wrap_context_cloze(editor):
     editor.web.eval("wrap('[[', ']]');")
 
 
-def add_context_cloze_button(buttons, editor):
-    b = editor.addButton("/home/geromt/anki-addons/ContextCloze/typing.png", "strike", on_strike, "tooltip", "strike")
-    return buttons.append(b)
+def add_wrap_context_cloze_button(buttons, editor):
+    return buttons.append(editor.addButton(None, "wrap_context_cloze", wrap_context_cloze))
 
 
-gui_hooks.editor_did_init_buttons.append(add_test_button)
-hooks.field_filter.append(format_cloze_text)
+gui_hooks.editor_did_init_buttons.append(add_wrap_context_cloze_button)
+gui_hooks.editor_did_init_buttons.append(add_context_cloze_button)
+# hooks.field_filter.append(format_cloze_text)
