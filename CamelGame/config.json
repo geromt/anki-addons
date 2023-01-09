@@ -1,0 +1,10 @@
+{
+  "init_vals" : {
+    "traveled_distance": 0,
+    "natives": -20,
+    "canteen": 5,
+    "thirst": 0
+  },
+  "status_check": 5,
+  "thirst_to_die": 15
+}
