@@ -1,5 +1,7 @@
 from aqt import gui_hooks
+import os.path
 
+PATH = os.path.dirname(os.path.realpath(__file__))
 
 def replace_by_square_brackets(text: str) -> str:
     """Substitute the text between double square brackets by ' <span class="cloze">[..]</span> '"""
@@ -37,11 +39,23 @@ def wrap_context_cloze(editor):
 
 
 def add_context_cloze_button(buttons, editor):
-    return buttons.append(editor.addButton(None, "context_cloze", context_cloze))
+    hotkey = "Ctrl+Alt+G"
+    tooltip = f"Generate the context cloze fields ({hotkey}"
+    return buttons.append(editor.addButton(os.path.join(PATH, "media", "context-cloze.svg"),
+                                           "context_cloze",
+                                           context_cloze,
+                                           tip=tooltip,
+                                           keys=hotkey))
 
 
 def add_wrap_context_cloze_button(buttons, editor):
-    return buttons.append(editor.addButton(None, "wrap_context_cloze", wrap_context_cloze))
+    hotkey = "Ctrl+Alt+W"
+    tooltip = f"Wrap the text with [[]] ({hotkey})"
+    return buttons.append(editor.addButton(os.path.join(PATH, "media", "wrap.svg"),
+                                           "wrap_context_cloze",
+                                           wrap_context_cloze,
+                                           tip=tooltip,
+                                           keys=hotkey))
 
 
 gui_hooks.editor_did_init_buttons.append(add_wrap_context_cloze_button)
