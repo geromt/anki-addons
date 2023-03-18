@@ -1,0 +1,11 @@
+{
+  "text": "Original Text",
+  "word": "Word (Not fill)",
+  "deleted_text": "Cloze (Not fill)",
+  "highlighted_text": "Highlighted (Not fill)",
+  "media_dir": "media",
+  "cc_icon": "context-cloze.svg",
+  "cc_hotkey": "Ctrl+Alt+G",
+  "wrap_icon": "wrap.svg",
+  "wrap_hotkey": "Ctrl+Alt+W"
+}
