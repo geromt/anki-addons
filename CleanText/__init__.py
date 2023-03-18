@@ -12,8 +12,8 @@ def delete_br_tag(text: str) -> str:
 
 
 def clean_text(editor: aqt.editor.Editor):
-    text = editor.note["Original Text"]
-    editor.note["Original Text"] = delete_br_tag(text)
+    text = editor.note.values()[editor.currentField]
+    editor.note[editor.note.keys()[editor.currentField]] = delete_br_tag(text)
 
     # Reload the note window
     editor.loadNote()
